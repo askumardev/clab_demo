@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "wicket": "^1.3.8"
+  },
+  "devDependencies": {
+    "@types/wicket": "^1.3.0"
+  }
+}
