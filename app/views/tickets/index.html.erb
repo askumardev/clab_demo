@@ -1,2 +1,7 @@
-<h1>Tickets#index</h1>
-<p>Find me in app/views/tickets/index.html.erb</p>
+<h1>Tickets</h1>
+<hr>
+<ul>
+  <% @tickets.each do |tkt| %>
+    <li><%= link_to "Ticket #{tkt.id}", ticket_path(tkt) %></li>
+  <% end %>
+</ul>

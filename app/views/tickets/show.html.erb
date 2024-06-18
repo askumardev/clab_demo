@@ -1,2 +1,17 @@
-<h1>Tickets#show</h1>
-<p>Find me in app/views/tickets/show.html.erb</p>
+<h1>Ticket <%= @ticket.request_number %></h1>
+
+<p>Request Type: <%= @ticket.request_type %></p>
+<p>Request Action: <%= @ticket.request_action %></p>
+
+<h2>Excavator Details</h2>
+<% if @ticket.excavator %>
+  <p>
+    <%= "Company: #{@ticket.excavator.company_name}, " \
+         "Address: #{@ticket.excavator.address}, " \
+         "City: #{@ticket.excavator.city}, " \
+         "State: #{@ticket.excavator.state}" %>
+  </p>
+<% end %>
+
+<div id="map" data-controller="map"  style="height: 400px;"></div>
+
