@@ -34,7 +34,7 @@ class Api::V1::TicketsController < ApplicationController
           itoi: [ :state, :county, :place, :name, :type, :suffix ]
         ]
       ],
-      additional_service_area_codes: [],  # Added this line
+      additional_service_area_codes: [],
       excavator_attributes: [
         :company_name, :address, :city, :state, :zip, :excavator_type,
         :contact_name, :contact_phone, :contact_email, :field_contact_name,
