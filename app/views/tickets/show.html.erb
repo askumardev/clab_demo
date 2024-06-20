@@ -5,7 +5,7 @@
 <p>Request Type: <%= @ticket.request_type %></p>
 <p>Request Action: <%= @ticket.request_action %></p>
 <p>Response Due Date: <%= @ticket.response_due_at.strftime("%B %d %Y") %></p>
-<p>Service Area: <%= @ticket.primary_service_area_code %>, <%= eval("[#{@ticket.additional_service_area_codes}]").join(", ") %></p>
+<p>Service Area: <%= @ticket.primary_service_area_code %>, <%= @ticket.additional_service_area_codes.scan(/\w+/).join(", ") %></p>
 <p>Digsite Info: <%= @ticket.well_known_text %></p>
 <h3>Excavator Details</h3>
 <hr>
