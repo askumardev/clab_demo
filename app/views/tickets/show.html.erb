@@ -1,16 +1,22 @@
-<h1>Ticket <%= @ticket.request_number %></h1>
-
+<h3>Ticket </h3>
+<hr>
+<p>Request Number: <%= @ticket.request_number %>
+<p>Sequence Number: <%= @ticket.sequence_number %>
 <p>Request Type: <%= @ticket.request_type %></p>
 <p>Request Action: <%= @ticket.request_action %></p>
+<p>Response Due Date: <%= @ticket.response_due_at.strftime("%B %d %Y") %></p>
+<p>Service Area: <%= @ticket.primary_service_area_code %>, <%= eval("[#{@ticket.additional_service_area_codes}]").join(",") %></p>
+<p>Digsite Info: <%= @ticket.well_known_text %></p>
+<%#binding.pry%>
 
-<h2>Excavator Details</h2>
+<h3>Excavator Details</h3>
+<hr>
 <% if @ticket.excavator %>
-  <p>
-    <%= "Company: #{@ticket.excavator.company_name}, " \
-         "Address: #{@ticket.excavator.address}, " \
-         "City: #{@ticket.excavator.city}, " \
-         "State: #{@ticket.excavator.state}" %>
+  <p>Company: <%= @ticket.excavator.company_name %> </p>
+  <p>Address: 
+    <%= "#{@ticket.excavator.address}, #{@ticket.excavator.city}, #{@ticket.excavator.state}" %>
   </p>
+  <p>Crew On Site: <%= @ticket.excavator.crew_onsite %> </p>
 <% end %>
 
 <br/>

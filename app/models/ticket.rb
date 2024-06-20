@@ -1,6 +1,6 @@
 class Ticket < ApplicationRecord
   has_one :excavator, dependent: :destroy
-  validates :request_number, presence: true
+  validates :request_number, presence: true, uniqueness: true
 
   def self.convert_polygon(original_polygon)
     coordinates_str = original_polygon.match(/\(\((.*)\)\)/)[1]
