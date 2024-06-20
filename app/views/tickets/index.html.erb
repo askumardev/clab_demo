@@ -1,7 +1,12 @@
-<h1>Tickets</h1>
+<h3>Tickets</h3 >
 <hr>
-<ul>
-  <% @tickets.each do |tkt| %>
-    <li><%= link_to "Ticket #{tkt.id}", ticket_path(tkt) %></li>
-  <% end %>
-</ul>
+<% if @tickets.present? %>
+  <p>Reference Number </p>
+  <ul>
+    <% @tickets.each do |tkt| %>
+      <li><%= link_to "#{tkt.request_number}", ticket_path(tkt) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tickets available</p>
+<% end %>
