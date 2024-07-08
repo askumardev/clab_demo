@@ -21,6 +21,8 @@ users = [
 users.each do |user_params|
   User.create!(first_name: user_params[:first_name], last_name: user_params[:last_name])
 end
+
+# users_and_posts = User.joins(:posts).pluck('users.first_name', 'users.last_name', 'posts.title')
 # users_with_posts = User.joins(:posts).select('users.*, posts.title AS post_title')
 # users_with_posts = User.joins(:posts).select('users.first_name, posts.title AS post_title')
 
