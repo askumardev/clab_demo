@@ -1,0 +1,11 @@
+<!-- app/views/chatroom/index.html.erb -->
+<h1>Chatroom</h1>
+
+<div id="messages">
+  <%= render @messages %>
+</div>
+
+<%= form_with model: Message.new, url: messages_path, local: true do |form| %>
+  <%= form.text_field :content, id: "message-input", placeholder: "Type your message..." %>
+  <%= form.submit "Send", id: "send-button" %>
+<% end %>

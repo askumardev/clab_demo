@@ -1,3 +1,4 @@
+require 'faker'
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -14,12 +15,12 @@ Post.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('posts')
 
 users = [
-  {first_name: "Ram", last_name: "Kumar"},
-  {first_name: "Sunil", last_name: "Raj"},
-  {first_name: "Dinesh", last_name: "Gupta"}
+  {first_name: "Ram", last_name: "Kumar", username: Faker::Internet.user[:username]},
+  {first_name: "Sunil", last_name: "Raj", username: Faker::Internet.user[:username]},
+  {first_name: "Dinesh", last_name: "Gupta", username: Faker::Internet.user[:username]}
 ]
 users.each do |user_params|
-  User.create!(first_name: user_params[:first_name], last_name: user_params[:last_name])
+  User.create!(first_name: user_params[:first_name], last_name: user_params[:last_name], username: user_params[:username])
 end
 
 # users_and_posts = User.joins(:posts).pluck('users.first_name', 'users.last_name', 'posts.title')

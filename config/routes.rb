@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #root 'chatroom#index'
+  resources :messages, only: [:create]
+  mount ActionCable.server => '/cable'
   resources :tickets, only: %i[index show]
   namespace :api do
     namespace :v1 do
