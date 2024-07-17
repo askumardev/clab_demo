@@ -31,4 +31,23 @@ class TicketsController < ApplicationController
 
     # @coordinates = [ [ 156922.3097, 6559238.263 ], [ 157424.9655, 6559462.937 ], [ 157837.7369, 6559395.169 ], [ 158078.2783, 6559284.668 ] ]
   end
+
+  # def users_comments
+  #   posts = Post.all
+  #   comments = posts.map(&:comments).flatten
+  #   @user_comments = comments.filter do |comment|
+  #     comment.author.username == params[:username]
+  #   end
+  # end
+
+  # This is a classic example of an "n+1" bug. The first line will retrieve all of the Post objects from the database,
+  # but then the very next line will make an additional request for each Post to retrieve the corresponding Comment objects.
+  # To make matters worse, this code is then making even more database requests in order to retrieve the Author of each Comment.
+
+  # This can all be avoided by changing the first line in the method to:
+
+  # posts = Post.includes(comments: [:author]).all
+
+  # This will tell ActiveRecord to perform a database join between the tables for Post, Comment, and Author,
+  # reducing the number of database requests to just one.
 end
